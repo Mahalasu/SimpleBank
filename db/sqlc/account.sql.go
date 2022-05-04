@@ -41,8 +41,7 @@ INSERT INTO accounts (
   currency
 ) VALUES (
   $1, $2, $3
-)
-RETURNING id, owner, balance, currency, created_at
+) RETURNING id, owner, balance, currency, created_at
 `
 
 type CreateAccountParams struct {
@@ -129,7 +128,7 @@ func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]A
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Account
+	items := []Account{}
 	for rows.Next() {
 		var i Account
 		if err := rows.Scan(

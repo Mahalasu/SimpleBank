@@ -1,11 +1,11 @@
 package db
 
 import (
-	"SimpleBank/util"
 	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"github.com/techschool/simplebank/util"
 )
 
 func createRandomTransfer(t *testing.T, fromAccount, toAccount Account) Transfer {
